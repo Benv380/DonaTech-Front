@@ -70,8 +70,10 @@ export function AuthProvider({ children }) {
 
   function getDashboardPath() {
     if (!user) return '/login'
-    if (hasRole('ROLE_ADMIN')) return '/dashboard/admin'
-    return '/dashboard'
+    if (hasRole('ROLE_ADMIN')) return '/admin/dashboard'
+    if (hasRole('ROLE_VALIDADOR')) return '/validador/dashboard'
+    if (hasRole('ROLE_BENEFICIARIO')) return '/beneficiario/dashboard'
+    return '/donante/dashboard'
   }
 
   return (

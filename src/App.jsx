@@ -29,7 +29,7 @@ import { MisCampanas } from './pages/beneficiario/MisCampanas'
 import { MiPerfil } from './pages/beneficiario/MiPerfil'
 
 // Admin
-import { AdminDashboard } from './pages/admin/AdminDashboard'
+import DashboardAdmin from './pages/admin/DashboardAdmin'
 import { GestionUsuarios } from './pages/admin/GestionUsuarios'
 import { GestionKits } from './pages/admin/GestionKits'
 import { AprobarCampanas } from './pages/admin/AprobarCampanas'
@@ -53,7 +53,7 @@ function App() {
 
             {/* ── Auth ── */}
             <Route element={<AuthLayout />}>
-              <Route path="/login" element={<LoginPage />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/register" element={<RegisterPage />} />
             </Route>
 
@@ -81,7 +81,7 @@ function App() {
 
             {/* ── Admin ── */}
             <Route element={<PrivateRoute allowedRoles={['ROLE_ADMIN']}><MainLayout /></PrivateRoute>}>
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/dashboard" element={<DashboardAdmin />} />
               <Route path="/admin/usuarios" element={<GestionUsuarios />} />
               <Route path="/admin/kits" element={<GestionKits />} />
               <Route path="/admin/campanas" element={<AprobarCampanas />} />

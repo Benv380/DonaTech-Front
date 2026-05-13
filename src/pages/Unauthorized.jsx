@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
-export default function Unauthorized() {
+export function Unauthorized() {
   const { isAuthenticated, getDashboardPath } = useAuth()
   return (
     <div className="min-h-screen bg-green-950 flex items-center justify-center p-6 text-center">

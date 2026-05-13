@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import Sidebar from '../components/layout/Sidebar'
-import { StatCard, Badge, Spinner } from '../components/ui'
-import { adminService } from '../services/catalogService'
+import { StatCard, Badge, Spinner } from '../../components/ui'
+import { adminService } from '../../services/catalogService'
 
 export default function DashboardAdmin() {
   const [stats, setStats]         = useState(null)
@@ -49,11 +48,8 @@ export default function DashboardAdmin() {
   const ROLE_COLORS = { ROLE_ADMIN: 'red', ROLE_VALIDADOR: 'amber', ROLE_DONANTE: 'green', ROLE_EMPRESA: 'blue', ROLE_BENEFICIARIO: 'purple' }
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <Sidebar pendingCount={stats?.pendingApprovals} />
-
-      <main className="flex-1 p-8 overflow-y-auto">
-        <div className="flex items-center justify-between mb-6">
+    <div>
+      <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Panel de administración</h1>
           <span className="text-sm text-gray-400">{new Date().toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </div>
@@ -142,7 +138,6 @@ export default function DashboardAdmin() {
             </section>
           </>
         )}
-      </main>
     </div>
   )
 }

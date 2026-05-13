@@ -3,19 +3,30 @@ import { useAuth } from '../context/AuthContext'
 import { useCart } from '../context/CartContext'
 
 const ADMIN_LINKS = [
-  { to: '/dashboard/admin', icon: '📊', label: 'Panel general' },
-  { to: '/dashboard/admin/users', icon: '👥', label: 'Usuarios' },
-  { to: '/dashboard/admin/campaigns', icon: '📢', label: 'Campañas' },
-  { to: '/dashboard/admin/kits', icon: '📦', label: 'Catálogo de kits' },
-  { to: '/dashboard/admin/metrics', icon: '📈', label: 'Métricas' },
+  { to: '/admin/dashboard', icon: '📊', label: 'Panel general' },
+  { to: '/admin/usuarios', icon: '👥', label: 'Usuarios' },
+  { to: '/admin/campanas', icon: '📢', label: 'Campañas' },
+  { to: '/admin/kits', icon: '📦', label: 'Catálogo de kits' },
+  { to: '/admin/metricas', icon: '📈', label: 'Métricas' },
 ]
 
 const DONOR_LINKS = [
-  { to: '/dashboard', icon: '🏠', label: 'Inicio' },
-  { to: '/cart', icon: '🛒', label: 'Donar ahora', cart: true },
-  { to: '/dashboard/history', icon: '📋', label: 'Mis donaciones' },
-  { to: '/dashboard/tracking', icon: '📍', label: 'Seguimiento' },
-  { to: '/dashboard/certificates', icon: '📄', label: 'Certificados' },
+  { to: '/donante/dashboard', icon: '🏠', label: 'Inicio' },
+  { to: '/donante/carrito', icon: '🛒', label: 'Donar ahora', cart: true },
+  { to: '/donante/donaciones', icon: '📋', label: 'Mis donaciones' },
+  { to: '/donante/seguimiento', icon: '📍', label: 'Seguimiento' },
+  { to: '/donante/certificados', icon: '📄', label: 'Certificados' },
+]
+
+const VALIDADOR_LINKS = [
+  { to: '/validador/dashboard', icon: '🏠', label: 'Inicio' },
+  { to: '/validador/pagos', icon: '✅', label: 'Validar pagos' },
+]
+
+const BENEFICIARIO_LINKS = [
+  { to: '/beneficiario/dashboard', icon: '🏠', label: 'Inicio' },
+  { to: '/beneficiario/campanas', icon: '📢', label: 'Mis campañas' },
+  { to: '/beneficiario/perfil', icon: '👤', label: 'Mi perfil' },
 ]
 
 export default function Sidebar({ pendingCount = 0 }) {
@@ -24,8 +35,11 @@ export default function Sidebar({ pendingCount = 0 }) {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const links = hasRole('ROLE_ADMIN') ? ADMIN_LINKS : DONOR_LINKS
   const isAdmin = hasRole('ROLE_ADMIN')
+  const links = isAdmin ? ADMIN_LINKS
+    : hasRole('ROLE_VALIDADOR') ? VALIDADOR_LINKS
+    : hasRole('ROLE_BENEFICIARIO') ? BENEFICIARIO_LINKS
+    : DONOR_LINKS
 
   function handleLogout() {
     logout()

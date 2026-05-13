@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { useAuth } from 'src/public/context/AuthContext'
-import { Input, Alert, Button } from '../components/ui'
-import RoleSelector from '../components/auth/RoleSelector'
-import PasswordStrength from '../components/auth/PasswordStrength'
+import { useAuth } from '../../context/AuthContext'
+import { Input, Alert, Button } from '../../components/ui'
+import RoleSelector from '../../components/auth/RoleSelector'
+import PasswordStrength from '../../components/auth/PasswordStrength'
 
-export default function Register() {
+export function RegisterPage() {
   const { register, isAuthenticated, getDashboardPath } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()

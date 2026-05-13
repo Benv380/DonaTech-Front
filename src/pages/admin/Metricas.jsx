@@ -1,0 +1,8 @@
+export function Metricas() {
+  return (
+    <div>
+      <h1 className="text-2xl font-bold text-gray-900 mb-6">Métricas</h1>
+      <p className="text-gray-500">Visualiza las métricas de la plataforma.</p>
+    </div>
+  )
+}

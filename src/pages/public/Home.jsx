@@ -1,4 +1,10 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useCart } from '../../context/CartContext'
+import { catalogService } from '../../services/catalogService'
+import Navbar from '../../layouts/Navbar'
+import KitCard from '../../components/kit/KitCard'
+import { Toast } from '../../components/ui'
 
 const MOCK_KITS = [
   { id: 'kit-001', name: 'Kit Alimentario', icon: '🍞', price: 35000, stock: 12, description: 'Arroz, fideos, aceite y conservas.', products: ['Arroz 5kg', 'Fideos', 'Aceite', 'Lentejas'] },
@@ -9,7 +15,7 @@ const MOCK_KITS = [
   { id: 'kit-006', name: 'Kit Bebé', icon: '👶', price: 45000, stock: 3, description: 'Artículos esenciales para bebé.', products: ['Pañales', 'Leche fórmula', 'Ropa'] },
 ]
 
-export default function Home() {
+export function Home() {
   const [kits, setKits] = useState([])
   const [loading, setLoading] = useState(true)
   const { count } = useCart()

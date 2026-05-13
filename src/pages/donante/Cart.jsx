@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import Navbar from 'src/layouts/Navbar'
-
-// import CartPanel from 'src/components/cart/CartPanel'
-import { catalogService } from 'src/components/ui/index.jsx'
+import { catalogService } from '../../services/catalogService'
+import KitCard from '../../components/kit/KitCard'
+import CartPanel from '../../components/cart/CartPanel'
 
 const MOCK_KITS = [
   { id: 'kit-001', name: 'Kit Alimentario Básico', icon: '🍞', price: 35000, stock: 12, description: 'Arroz, fideos, aceite, legumbres y conservas para una semana.', products: ['Arroz 5kg', 'Fideos', 'Aceite 1L', 'Lentejas', 'Porotos'] },
@@ -13,7 +12,7 @@ const MOCK_KITS = [
   { id: 'kit-006', name: 'Kit Bebé', icon: '👶', price: 45000, stock: 3, description: 'Artículos esenciales para bebés hasta 1 año.', products: ['Pañales S x30', 'Leche fórmula', 'Ropa x3', 'Crema', 'Toallitas'] },
 ]
 
-export default function Cart() {
+export function CartPage() {
   const [kits, setKits]       = useState([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch]   = useState('')
@@ -37,8 +36,6 @@ export default function Cart() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
-
       <div className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start">
 
         {/* ── Kits disponibles ── */}

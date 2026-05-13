@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { useAuth } from 'src/public/context/AuthContext'
-import { Input, Alert, Button } from 'src/components/ui'
+import { useAuth } from '../../context/AuthContext'
+import { Input, Alert, Button } from '../../components/ui'
 
-export default function Login() {
+export function Login() {
   const { login, isAuthenticated, getDashboardPath } = useAuth()
   const navigate  = useNavigate()
   const location  = useLocation()
